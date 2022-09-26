@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,6 +6,7 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  @Output() buttonSelected = new EventEmitter<string>();
   displayed = false;
   dropdownItems = [
     {name: 'Save Data', link: '/save'},
@@ -20,5 +21,9 @@ export class HeaderComponent implements OnInit {
 
   toggleDisplay(): void {
     this.displayed = !this.displayed;
+  }
+
+  onSelect(selected: string): void {
+    this.buttonSelected.emit(selected);
   }
 }

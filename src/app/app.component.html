@@ -1,10 +1,9 @@
-<app-header></app-header>
+<app-header (buttonSelected)="onNavigate($event)"></app-header>
 <div class="flex flex-col flex-wrap mx-auto max-w-4xl py-8">
-  <div class="flex justify-between w-full">
+  <div class="flex" *ngIf="link === 'recipe'">
     <app-recipes></app-recipes>
   </div>
-  <hr class="my-10">
-  <div class="flex-auto">
+  <div class="flex-auto" *ngIf="link !== 'recipe'">
     <app-shopping-list></app-shopping-list>
   </div>
 </div>

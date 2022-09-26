@@ -1,8 +1,15 @@
-<div class="grid md:grid-flow-col grid-flow-row md:gap-12 gap-0 mx-auto">
-  <div class="md:mb-0 mb-4">
-    <app-recipe-list></app-recipe-list>
-  </div>
+<div class="mx-auto">
   <div>
-    <app-recipe-detail></app-recipe-detail>
+    <button class="bg-cyan-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+      New Recipe
+    </button>
+  </div>
+  <div class="flex flex-wrap md:space-x-12">
+    <div class="md:mb-0 mb-4">
+      <app-recipe-list (recipeClicked)="onRecipeSelected($event)"></app-recipe-list>
+    </div>
+    <div *ngIf="selectedRecipe">
+      <app-recipe-detail [recipe]="selectedRecipe"></app-recipe-detail>
+    </div>
   </div>
 </div>

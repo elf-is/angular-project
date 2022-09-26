@@ -1,12 +1,12 @@
-<div class="flex flex-col flex-grow-0 max-w-sm rounded grow shadow-lg mt-4 border-1">
-  <img class="w-full" [src]="'https://placeimg.com/480/240/nature'" alt="Recipe Name">
+<div class="max-w-sm rounded overflow-auto shadow-lg border-1 mt-4">
+  <img class="w-full" [src]="recipe.imagePath" alt="Recipe Name">
   <div class="px-6 py-4">
     <div class="flex flex-grow-0 font-bold text-xl mb-2 justify-between align-middle">
-      <div class="my-auto">Recipe Name</div>
+      <div class="my-auto">{{recipe.name}}</div>
       <app-dropdown [items]="dropdownItems"></app-dropdown>
     </div>
     <p class="text-gray-700 text-base">
-      Recipe Description
+      {{recipe.description}}
     </p>
     <p class="text-gray-700 text-base">
       Recipe Ingredients

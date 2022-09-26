@@ -23,35 +23,39 @@
         <a href="/home" class="text-2xl no-underline text-white hover:text-gray-300">Recipe Book</a>
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">
-            <a href="#" class="bg-gray-700 text-white px-3 py-2 rounded-md text-md font-medium" aria-current="page">Home
+            <a href="#" class="nav-btn" aria-current="page">Home
               Page</a>
 
             <a href="#"
-               class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-md font-medium">Recipes
-              Book</a>
+               class="nav-btn"
+            (click)="onSelect('recipe')">
+              Recipes Book
+            </a>
 
             <a href="#"
-               class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-md font-medium">Shopping
-              List</a>
+               class="nav-btn"
+            (click)="onSelect('shopping-list')">
+              Shopping List
+            </a>
           </div>
         </div>
       </div>
-      <app-dropdown [items]="dropdownItems"></app-dropdown>
+      <app-dropdown [items]="dropdownItems" ></app-dropdown>
     </div>
   </div>
 
   <!-- Mobile menu, show/hide based on menu state. -->
   <div *ngIf="displayed" id="mobile-menu">
     <div class="space-y-1 px-2 pt-2 pb-3">
-      <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Home
+      <a href="#" class="mobile-nav" aria-current="page">Home
         Page</a>
 
       <a href="#"
-         class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Recipes
+         class="mobile-nav">Recipes
         Book</a>
 
       <a href="#"
-         class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Shopping
+         class="mobile-nav">Shopping
         List</a>
     </div>
   </div>
