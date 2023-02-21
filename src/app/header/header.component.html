@@ -20,42 +20,31 @@
         </button>
       </div>
       <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-        <a href="/home" class="text-2xl no-underline text-white hover:text-gray-300">Recipe Book</a>
+        <a href="" class="text-2xl no-underline text-white hover:text-gray-300">Recipe Book</a>
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">
-            <a href="#" class="nav-btn" aria-current="page">Home
-              Page</a>
+            <a routerLink="/recipes" routerLinkActive="active" ariaCurrentWhenActive="page"
+               class="nav-btn">Recipe Book</a>
 
-            <a href="#"
-               class="nav-btn"
-            (click)="onSelect('recipe')">
-              Recipes Book
-            </a>
-
-            <a href="#"
-               class="nav-btn"
-            (click)="onSelect('shopping-list')">
-              Shopping List
-            </a>
+            <a routerLink="/shopping-list" routerLinkActive="active" ariaCurrentWhenActive="page"
+               [routerLinkActiveOptions]={exact:true} class="nav-btn">Shopping List</a>
           </div>
         </div>
       </div>
-      <app-dropdown [items]="dropdownItems" ></app-dropdown>
+      <app-dropdown [items]="dropdownItems"></app-dropdown>
     </div>
   </div>
 
   <!-- Mobile menu, show/hide based on menu state. -->
   <div *ngIf="displayed" id="mobile-menu">
     <div class="space-y-1 px-2 pt-2 pb-3">
-      <a href="#" class="mobile-nav" aria-current="page">Home
-        Page</a>
 
-      <a href="#"
-         class="mobile-nav">Recipes
+      <a routerLink="/recipes" routerLinkActive="active" ariaCurrentWhenActive="page"
+         [routerLinkActiveOptions]={exact:true} class="mobile-nav">Recipes
         Book</a>
 
-      <a href="#"
-         class="mobile-nav">Shopping
+      <a routerLink="/shopping-list" routerLinkActive="active" ariaCurrentWhenActive="page"
+         [routerLinkActiveOptions]={exact:true} class="mobile-nav">Shopping
         List</a>
     </div>
   </div>

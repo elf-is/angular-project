@@ -1,7 +1,5 @@
 <div class="flex flex-col">
   <app-recipe-item
-    *ngFor="let recipe of recipes"
-    [item]="recipe"
-    (click)="onSelectRecipe(recipe)">
+    *ngFor="let recipe of recipes; let i = index" [index]="i">
   </app-recipe-item>
 </div>

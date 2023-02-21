@@ -10,6 +10,12 @@
 node_modules
 npm-debug.log
 yarn-error.log
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+.pnp.*
+.yarn/unplugged
+.yarn/build-state.yml
 
 # IDEs and editors
 .idea/

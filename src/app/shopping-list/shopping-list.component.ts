@@ -1,28 +1,32 @@
-import {Component, OnInit} from '@angular/core';
-import {Ingredient} from "../shared/ingredient.model";
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Subscription} from 'rxjs';
+import {Ingredient} from '../shared/models/ingredient.model';
+import {ShoppingListService} from '../shared/services/shopping-list.service';
 
 @Component({
   selector: 'app-shopping-list',
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.css']
 })
-export class ShoppingListComponent implements OnInit {
-  ingredients: Ingredient[] = [
-    new Ingredient('Apples', 5),
-    new Ingredient('Tomatoes', 10),
-  ];
+export class ShoppingListComponent implements OnInit, OnDestroy {
+  ingredients: Ingredient[] = []
+  subscription: Subscription;
 
-  constructor() {
+  constructor(private shoppingListService: ShoppingListService) {
   }
 
   ngOnInit(): void {
+    this.ingredients = this.shoppingListService.getIngredients();
+    this.subscription = this.shoppingListService.ingredientChanged.subscribe((ingredients: Ingredient[]) => {
+      this.ingredients = ingredients;
+    });
   }
 
-  onIngredientAdd(ingredient: Ingredient) {
-    if (this.ingredients.find(i => i.name.toUpperCase() === ingredient.name.toUpperCase())) {
-      this.ingredients.find(i => i.name.toUpperCase() === ingredient.name.toUpperCase()).amount += ingredient.amount;
-    } else {
-      this.ingredients.push(ingredient);
-    }
+  onSelect(index: number) {
+    this.shoppingListService.ingredientSelected.next(index);
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

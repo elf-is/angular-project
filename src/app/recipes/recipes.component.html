@@ -1,15 +1,15 @@
-<div class="mx-auto">
-  <div>
-    <button class="bg-cyan-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+<div class="flex-auto">
+  <div class="grid">
+    <a routerLink="new" class="mr-auto bg-cyan-500 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded-full">
       New Recipe
-    </button>
+    </a>
   </div>
-  <div class="flex flex-wrap md:space-x-12">
+  <div class="flex space-x-4">
     <div class="md:mb-0 mb-4">
-      <app-recipe-list (recipeClicked)="onRecipeSelected($event)"></app-recipe-list>
+      <app-recipe-list></app-recipe-list>
     </div>
-    <div *ngIf="selectedRecipe">
-      <app-recipe-detail [recipe]="selectedRecipe"></app-recipe-detail>
+    <div>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
