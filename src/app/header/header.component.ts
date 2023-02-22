@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -8,8 +8,8 @@ import {Component, OnInit} from '@angular/core';
 export class HeaderComponent implements OnInit {
   displayed = false;
   dropdownItems = [
-    {name: 'Save Data', link: '/save'},
-    {name: 'Fetch Data', link: '/fetch'}
+    { name: 'Save Data', link: '/save' },
+    { name: 'Fetch Data', link: '/fetch' }
   ];
 
   constructor() {

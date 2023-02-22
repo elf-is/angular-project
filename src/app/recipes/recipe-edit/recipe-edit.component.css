@@ -1,0 +1,6 @@
+.text-input {
+  @apply w-full border-gray-300 rounded-md focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm;
+}
+form input.ng-invalid.ng-touched {
+  @apply border-red-500 focus:border-red-500 focus:ring-red-500;
+}

@@ -1,3 +1,20 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.btn {
+  @apply md:w-fit md:py-2 py-2 px-4 text-white rounded-lg focus:outline-none
+    focus:ring-1 focus:ring-offset-1 disabled:opacity-50;
+}
+
+.btn-green {
+  @apply bg-green-500 hover:enabled:bg-green-700 focus:enabled:ring-green-400;
+}
+
+.btn-red {
+  @apply bg-red-500 hover:enabled:bg-red-700 focus:enabled:ring-red-400;
+}
+
+.btn-cyan {
+  @apply bg-cyan-500 hover:enabled:bg-cyan-700 focus:enabled:ring-cyan-400;
+}

@@ -1,42 +1,31 @@
-<div class="flex flex-col flex-grow rounded overflow-auto shadow-lg border-1 mt-4 max-w-lg">
+<div class="flex flex-col flex-grow rounded overflow-auto shadow-lg border-1 mt-4 max-w-xl">
   <div class="max-w-lg">
-    <img class="w-full h-48 overflow-hidden grow" [src]="recipe.imagePath" alt="{{recipe.name}}">
+    <img class="w-full h-48 overflow-hidden grow" [src]="recipe?.imagePath" alt="{{recipe?.name}}">
   </div>
-  <div class="px-6 py-4">
+  <div class="px-6 py-4 h-52">
     <div class="flex flex-grow-0 font-bold mb-2 justify-between align-middle space-x-12">
-      <div class="my-auto text-xl">{{recipe.name}}</div>
+      <div class="my-auto text-xl">{{recipe?.name}}</div>
       <div class="relative inline-block text-left">
-        <button type="button"
-                class="manage-btn" (click)="toggleDisplay()">
+        <button type="button" class="manage-btn" (click)="toggleDisplay()">
           Manage
           <svg class="-mr-1 ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-               aria-hidden="true">
+            aria-hidden="true">
             <path fill-rule="evenodd"
-                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                  clip-rule="evenodd"/>
+              d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+              clip-rule="evenodd" />
           </svg>
         </button>
-        <div
-          *ngIf="display"
-          class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black
+        <div *ngIf="display" role="menu" class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black
           ring-opacity-5 focus:outline-none">
           <div class="py-1" role="none">
-            <a class="menuitem"
-               role="menuitem"
-               tabindex="-1" id="menu-item-0"
-               (click)="onAddToShoppingList()">
+            <a class="menuitem" role="menuitem" tabindex="-1" id="menu-item-0" (click)="onAddToShoppingList()">
               To Shopping List
             </a>
-            <a class="menuitem"
-               role="menuitem"
-               tabindex="-1" id="menu-item-1"
-               [routerLink]="['/recipes/' + this.id + '/edit']">
+            <a class="menuitem" role="menuitem" tabindex="-1" id="menu-item-1"
+              [routerLink]="['/recipes/' + this.id + '/edit']">
               Edit
             </a>
-            <a class="menuitem"
-               role="menuitem"
-               tabindex="-1" id="menu-item-2"
-               [routerLink]="['/recipes'+'/delete']">
+            <a class="menuitem" role="menuitem" tabindex="-1" id="menu-item-2" (click)="onDeleteRecipe(id)">
               Delete
             </a>
           </div>
@@ -47,9 +36,7 @@
       {{recipe.description}}
     </p>
     <ul class="text-gray-700 ml-4 text-base list-disc">
-      <li *ngFor="let ingredient of recipe.ingredients">{{ingredient.name}} ({{ingredient.amount}})</li>
+      <li *ngFor="let ingredient of recipe.ingredients">{{ingredient.name}} &times; {{ingredient.amount}}</li>
     </ul>
   </div>
 </div>
-
-

@@ -15,7 +15,8 @@
     "lib": [
       "es2020",
       "dom"
-    ]
+    ],
+    "forceConsistentCasingInFileNames": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false

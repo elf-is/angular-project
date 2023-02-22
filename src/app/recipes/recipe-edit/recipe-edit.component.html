@@ -1,1 +1,57 @@
-<p>recipe-edit works!</p>
+<div class="max-w-lg mt-5 md:mt-0 sm:ml-3 md:ml-5">
+    <form class="space-y-3" [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+        <div>
+            <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+            <div class="flex mt-1 rounded-md shadow-sm">
+                <input type="text" name="name" id="name" class="text-input" formControlName="name">
+            </div>
+        </div>
+        <div>
+            <p class="block text-sm font-medium text-gray-700">Image</p>
+            <div class="flex items-center mt-1 space-x-2">
+                <span class="inline-block w-24 h-24 overflow-hidden rounded-md">
+                    <img [src]="recipeForm.get('imagePath').value" alt="" class="object-cover w-full h-full">
+                </span>
+                <div class="flex flex-col w-full">
+                    <label for="imagePath">Image Path</label>
+                    <input type="text" name="imagePath" id="imagePath" class="text-input" formControlName="imagePath"
+                        #imagePath>
+                </div>
+            </div>
+        </div>
+        <div>
+            <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+            <textarea id="description" name="description" rows="6" class="text-input"
+                formControlName="description"></textarea>
+        </div>
+        <div formArrayName="ingredients" class="space-y-2">
+            <h2 for="ingredientName">Ingredients</h2>
+            <div class="grid grid-cols-7 gap-3 border border-gray-300 rounded-md p-2 md:border-none md:p-0"
+                *ngFor="let control of controls;let i = index;" [formGroupName]="i">
+                <div class="col-span-7 sm:col-span-6 lg:col-span-4">
+                    <input type="text" name="ingredientName" id="ingredientName" class="text-input"
+                        formControlName="name">
+                </div>
+                <div class="col-span-7 sm:col-span-2 lg:col-span-2">
+                    <input type="number" name="ingredientAmount" id="ingredientAmount" class="text-input"
+                        formControlName="amount">
+                </div>
+                <div class="col-span-2 my-auto sm:col-span-1">
+                    <button type="button" class="px-3 py-1 font-bold text-white bg-red-500 rounded-md hover:bg-red-700"
+                        (click)="onDeleteIngredient(i)">
+                        &times;
+                    </button>
+                </div>
+            </div>
+            <div>
+                <button type="button" class="block mx-auto btn btn-green" (click)="onAddIngredient()">Add
+                    Ingredient</button>
+            </div>
+        </div>
+        <div class="grid md:grid-cols-4 lg:grid-cols-6">
+            <div class="lg:col-span-4"></div>
+            <button type="submit" class="mb-2 btn btn-cyan md:mb-0" [disabled]="recipeForm.invalid">Save</button>
+            <button type="button" class="btn btn-red" (click)="onCancel()">Cancel</button>
+        </div>
+    </form>
+</div>

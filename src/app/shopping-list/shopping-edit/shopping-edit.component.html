@@ -1,25 +1,26 @@
-<div class="text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 py-4">
+<div class="text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 py-6">
   <form class="mx-auto my-auto" (ngSubmit)="onSave(form)" #form="ngForm">
     <div class="w-full grid md:grid-cols-5 md:gap-3">
       <div class="text-center my-auto text-xl font-bold text-gray-700 col-start-1 col-end-2">Edit</div>
       <div class="relative z-0 my-2 w-full group md:col-span-2">
-        <input type="text" name="name" id="name" class="peer" placeholder=" " ngModel required #name="ngModel"/>
+        <input type="text" name="name" id="name" class="peer" placeholder=" " ngModel required #name="ngModel" />
         <label for="name">Name</label>
       </div>
       <div class="relative z-0 my-2 w-full group md:col-span-1">
         <input type="number" name="amount" id="amount" class="peer" placeholder=" " required min="1" max="100" ngModel
-               #amount="ngModel"/>
+          #amount="ngModel" />
         <label for="amount">Amount</label>
       </div>
     </div>
-    <div class="grid md:grid-cols-6 space-y-2 mt-2 md:space-y-0 max-w-lg md:ml-12 mx-auto">
-      <button type="submit" class="btn btn-green" [disabled]="form.invalid">
+    <div class="grid md:grid-cols-6 space-y-2 mt-2 md:space-y-0 justify-items-center">
+      <div class="col-span-0 md:col-span-3"></div>
+      <button type="submit" class="btn btn-green w-24" [disabled]="form.invalid">
         {{isEdit ? 'Update' : 'Add'}}
       </button>
-      <button type="button" class="btn btn-red" (click)="onDelete()" *ngIf="isEdit">
+      <button type="button" class="btn btn-red w-24" (click)="onDelete()" *ngIf="isEdit">
         Delete
       </button>
-      <button type="button" class="btn btn-cyan" (click)="onClear(form)">
+      <button type="button" class="btn btn-cyan w-24" (click)="onClear(form)">
         Clear
       </button>
     </div>

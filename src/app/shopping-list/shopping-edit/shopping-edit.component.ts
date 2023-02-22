@@ -1,8 +1,8 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {NgForm} from '@angular/forms';
-import {Subscription} from 'rxjs';
-import {Ingredient} from '../../shared/models/ingredient.model';
-import {ShoppingListService} from "../../shared/services/shopping-list.service";
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { Ingredient } from '../../shared/models/ingredient.model';
+import { ShoppingListService } from "../../shared/services/shopping-list.service";
 
 @Component({
   selector: 'app-shopping-edit',
@@ -10,7 +10,7 @@ import {ShoppingListService} from "../../shared/services/shopping-list.service";
   styleUrls: ['./shopping-edit.component.css']
 })
 export class ShoppingEditComponent implements OnInit, OnDestroy {
-  @ViewChild('form', {static: false}) form: NgForm;
+  @ViewChild('form', { static: false }) form: NgForm;
   editItem: Ingredient;
   subscription: Subscription;
   isEdit: boolean = false;

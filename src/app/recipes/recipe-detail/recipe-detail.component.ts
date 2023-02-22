@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {Recipe} from "../../shared/models/recipe.model";
-import {RecipeService} from "../../shared/services/recipe.service";
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from "@angular/router";
+import { Recipe } from "../../shared/models/recipe.model";
+import { RecipeService } from "../../shared/services/recipe.service";
 
 
 @Component({
@@ -32,5 +32,10 @@ export class RecipeDetailComponent implements OnInit {
 
   toggleDisplay(): void {
     this.display = !this.display;
+  }
+
+  onDeleteRecipe(): void {
+    this.recipeService.deleteRecipe(this.id);
+    this.router.navigate(['/recipes']);
   }
 }
