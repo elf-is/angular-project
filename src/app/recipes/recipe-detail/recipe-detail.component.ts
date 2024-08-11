@@ -1,25 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from "@angular/router";
-import { Recipe } from "../../shared/models/recipe.model";
-import { RecipeService } from "../../shared/services/recipe.service";
-
+import { ActivatedRoute, Router } from '@angular/router';
+import { Recipe } from '../../shared/models/recipe.model';
+import { RecipeService } from '../../shared/services/recipe.service';
 
 @Component({
   selector: 'app-recipe-detail',
   templateUrl: './recipe-detail.component.html',
-  styleUrls: ['./recipe-detail.component.css']
+  styleUrls: ['./recipe-detail.component.css'],
 })
 export class RecipeDetailComponent implements OnInit {
   recipe: Recipe;
   id = 0;
   display = false;
 
-  constructor(private recipeService: RecipeService, private route: ActivatedRoute, private router: Router) {
-  }
+  constructor(
+    private recipeService: RecipeService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.display = false;
-    this.route.params.subscribe(params => {
+    this.route.params.subscribe((params) => {
       this.id = +params['id'];
       this.recipe = this.recipeService.getRecipe(this.id);
     });

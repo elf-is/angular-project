@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Ingredient } from "../models/ingredient.model";
+import { Ingredient } from '../models/ingredient.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ShoppingListService {
   ingredientChanged = new Subject<Ingredient[]>();
   ingredientSelected = new Subject<number>();
   ingredients = [];
 
-  constructor() {
-  }
+  constructor() {}
 
   getIngredients() {
     return this.ingredients.slice();
@@ -19,8 +18,14 @@ export class ShoppingListService {
 
   addIngredients(ingredients: Ingredient[]) {
     for (const ingredient of ingredients) {
-      if (this.ingredients.find(i => i.name.toUpperCase() === ingredient.name.toUpperCase())) {
-        this.ingredients.find(i => i.name.toUpperCase() === ingredient.name.toUpperCase()).amount += ingredient.amount;
+      if (
+        this.ingredients.find(
+          (i) => i.name.toUpperCase() === ingredient.name.toUpperCase()
+        )
+      ) {
+        this.ingredients.find(
+          (i) => i.name.toUpperCase() === ingredient.name.toUpperCase()
+        ).amount += ingredient.amount;
       } else {
         this.ingredients.push(ingredient);
       }
@@ -29,8 +34,14 @@ export class ShoppingListService {
   }
 
   addIngredient(ingredient: Ingredient) {
-    if (this.ingredients.find(i => i.name.toUpperCase() === ingredient.name.toUpperCase())) {
-      this.ingredients.find(i => i.name.toUpperCase() === ingredient.name.toUpperCase()).amount += ingredient.amount;
+    if (
+      this.ingredients.find(
+        (i) => i.name.toUpperCase() === ingredient.name.toUpperCase()
+      )
+    ) {
+      this.ingredients.find(
+        (i) => i.name.toUpperCase() === ingredient.name.toUpperCase()
+      ).amount += ingredient.amount;
     } else {
       this.ingredients.push(ingredient);
     }
@@ -46,5 +57,4 @@ export class ShoppingListService {
     this.ingredients.splice(this.ingredients.indexOf(ingredient), 1);
     this.ingredientChanged.next(this.ingredients.slice());
   }
-
 }
